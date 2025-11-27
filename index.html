@@ -4,23 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chaordium - Soluções Tecnológicas Inovadoras</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #ffffff;
             --secondary-color: #000000;
             --accent-color: #00a8ff;
-            --dark-gray: #1a1a1a;
-            --medium-gray: #2d2d2d;
-            --light-gray: #4a4a4a;
+            --dark-gray: #121212;
+            --medium-gray: #1e1e1e;
+            --light-gray: #2d2d2d;
             --text-light: #e0e0e0;
-            --text-dark: #333333;
+            --text-muted: #a0a0a0;
+            --card-bg: #1a1a1a;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Roboto', sans-serif;
         }
 
         body {
@@ -39,7 +43,7 @@
         /* Header Styles */
         header {
             background-color: var(--secondary-color);
-            padding: 20px 0;
+            padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -62,9 +66,21 @@
             margin-right: 10px;
         }
 
-        .logo h1 {
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text h1 {
             font-size: 1.8rem;
             color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .logo-text p {
+            font-size: 0.7rem;
+            color: var(--accent-color);
+            letter-spacing: 1px;
         }
 
         nav ul {
@@ -81,6 +97,7 @@
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
+            font-size: 0.95rem;
         }
 
         nav ul li a:hover {
@@ -91,11 +108,12 @@
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
+            color: var(--primary-color);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
             padding: 120px 0;
@@ -106,12 +124,14 @@
             font-size: 3rem;
             margin-bottom: 20px;
             color: var(--primary-color);
+            font-weight: 700;
         }
 
         .hero p {
             font-size: 1.2rem;
             max-width: 800px;
             margin: 0 auto 30px;
+            color: var(--text-light);
         }
 
         .btn {
@@ -122,11 +142,27 @@
             border-radius: 5px;
             text-decoration: none;
             font-weight: 600;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
         }
 
         .btn:hover {
             background-color: #0088cc;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 168, 255, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
         }
 
         /* Sections */
@@ -143,12 +179,14 @@
             font-size: 2.5rem;
             color: var(--primary-color);
             margin-bottom: 15px;
+            font-weight: 700;
         }
 
         .section-title p {
-            color: var(--text-light);
+            color: var(--text-muted);
             max-width: 700px;
             margin: 0 auto;
+            font-size: 1.1rem;
         }
 
         /* About Section */
@@ -166,6 +204,11 @@
             font-size: 1.8rem;
             margin-bottom: 20px;
             color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
         }
 
         .about-image {
@@ -193,11 +236,14 @@
         }
 
         .service-card {
-            background-color: var(--dark-gray);
+            background-color: var(--card-bg);
             border-radius: 10px;
             padding: 30px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .service-card:hover {
@@ -214,6 +260,12 @@
             font-size: 1.5rem;
             margin-bottom: 15px;
             color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .service-card p {
+            flex-grow: 1;
+            color: var(--text-muted);
         }
 
         /* Products Section */
@@ -224,10 +276,18 @@
         }
 
         .product-card {
-            background-color: var(--medium-gray);
+            background-color: var(--card-bg);
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
         }
 
         .product-image {
@@ -248,12 +308,22 @@
 
         .product-content {
             padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .product-content h3 {
             font-size: 1.5rem;
             margin-bottom: 15px;
             color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .product-content p {
+            margin-bottom: 20px;
+            color: var(--text-muted);
+            flex-grow: 1;
         }
 
         /* Contact Section */
@@ -274,10 +344,12 @@
             font-size: 1.8rem;
             margin-bottom: 20px;
             color: var(--primary-color);
+            font-weight: 600;
         }
 
         .contact-info p {
             margin-bottom: 15px;
+            color: var(--text-muted);
         }
 
         .contact-form {
@@ -292,16 +364,19 @@
             display: block;
             margin-bottom: 5px;
             font-weight: 500;
+            color: var(--text-light);
         }
 
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 12px;
             border: 1px solid var(--light-gray);
             border-radius: 5px;
             background-color: var(--dark-gray);
             color: var(--text-light);
+            font-size: 1rem;
         }
 
         .form-group textarea {
@@ -329,6 +404,7 @@
             font-size: 1.3rem;
             margin-bottom: 20px;
             color: var(--primary-color);
+            font-weight: 600;
         }
 
         .footer-column ul {
@@ -340,7 +416,7 @@
         }
 
         .footer-column ul li a {
-            color: var(--text-light);
+            color: var(--text-muted);
             text-decoration: none;
             transition: color 0.3s;
         }
@@ -353,7 +429,33 @@
             text-align: center;
             padding-top: 20px;
             border-top: 1px solid var(--light-gray);
-            color: var(--text-light);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
         }
 
         /* Responsive Design */
@@ -380,10 +482,12 @@
             nav ul {
                 flex-direction: column;
                 margin-top: 20px;
+                width: 100%;
             }
 
             nav ul li {
                 margin: 10px 0;
+                text-align: center;
             }
 
             .mobile-menu {
@@ -401,6 +505,28 @@
                 flex-direction: column;
                 gap: 30px;
             }
+
+            .services-grid, .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Material Design Enhancements */
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .material-icons {
+            vertical-align: middle;
+            margin-right: 5px;
         }
     </style>
 </head>
@@ -409,15 +535,13 @@
     <header>
         <div class="container header-container">
             <div class="logo">
-                <!-- Inserir logo aqui -->
-                <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="25" cy="25" r="20" stroke="#00a8ff" stroke-width="3"/>
-                    <path d="M15 25C15 19.4772 19.4772 15 25 15C30.5228 15 35 19.4772 35 25C35 30.5228 30.5228 35 25 35C19.4772 35 15 30.5228 15 25Z" fill="#00a8ff"/>
-                    <path d="M20 20L30 30M30 20L20 30" stroke="#ffffff" stroke-width="2"/>
-                </svg>
-                <h1>CHAORDIUM</h1>
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjUiIGN5PSIyNSIgcj0iMjAiIHN0cm9rZT0iIzAwYThmZiIgc3Ryb2tlLXdpZHRoPSIzIi8+CjxwYXRoIGQ9Ik0xNSAyNUMxNSAxOS40NzcyIDE5LjQ3NzIgMTUgMjUgMTVDMzAuNTIyOCAxNSAzNSAxOS40NzcyIDM1IDI1QzM1IDMwLjUyMjggMzAuNTIyOCAzNSAyNSAzNUMxOS40NzcyIDM1IDE1IDMwLjUyMjggMTUgMjVaIiBmaWxsPSIjMDBhOGZmIi8+CjxwYXRoIGQ9Ik0yMCAyMEwzMCAzME0zMCAyMEwyMCAzMCIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjIiLz4KPC9zdmc+" alt="Chaordium Logo">
+                <div class="logo-text">
+                    <h1>CHAORDIUM</h1>
+                    <p>BREAKING CHAOS. BUILDING ORDER</p>
+                </div>
             </div>
-            <div class="mobile-menu">☰</div>
+            <div class="mobile-menu"><i class="material-icons">menu</i></div>
             <nav>
                 <ul>
                     <li><a href="#home">Home</a></li>
@@ -452,6 +576,7 @@
                     <p>A Chaordium é uma empresa de tecnologia especializada no desenvolvimento de soluções inovadoras para médias e grandes empresas. Nossa abordagem combina o melhor do mundo Open Source com tecnologias proprietárias de ponta, criando sistemas robustos e escaláveis.</p>
                     <p>Com uma equipe multidisciplinar de especialistas em desenvolvimento de software, inteligência artificial, administração de logs e garantia de qualidade, oferecemos soluções completas que atendem às demandas mais complexas do mercado atual.</p>
                     <p>Nossa metodologia integra práticas ágeis com análise de dados avançada, permitindo que nossos clientes não apenas resolvam problemas imediatos, mas também antecipem tendências e oportunidades futuras.</p>
+                    <a href="#contact" class="btn btn-outline">Saiba Mais</a>
                 </div>
                 <div class="about-image">
                     <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Equipe Chaordium">
@@ -469,34 +594,34 @@
             </div>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">🔍</div>
-                    <h3>Desenvolvimento de Soluções Open Source</h3>
-                    <p>Criamos sistemas personalizados baseados em tecnologias Open Source, garantindo flexibilidade, segurança e redução de custos para sua empresa.</p>
+                    <div class="service-icon"><i class="fas fa-code-branch"></i></div>
+                    <h3>Outsourcing Tecnológico</h3>
+                    <p>Fornecemos equipes especializadas para complementar seus recursos internos, oferecendo expertise em desenvolvimento, QA e administração de sistemas com flexibilidade e escalabilidade.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🤖</div>
+                    <div class="service-icon"><i class="fas fa-robot"></i></div>
                     <h3>Integração de Inteligência Artificial</h3>
-                    <p>Implementamos soluções de IA que automatizam processos, otimizam operações e extraem insights valiosos de seus dados corporativos.</p>
+                    <p>Implementamos soluções de IA que automatizam processos, otimizam operações e extraem insights valiosos de seus dados corporativos, aumentando a eficiência e a competitividade.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">📊</div>
+                    <div class="service-icon"><i class="fas fa-chart-line"></i></div>
                     <h3>Administração de Logs e Monitoramento</h3>
-                    <p>Oferecemos sistemas avançados de coleta, análise e visualização de logs para garantir a performance e segurança de sua infraestrutura.</p>
+                    <p>Oferecemos sistemas avançados de coleta, análise e visualização de logs para garantir a performance, segurança e conformidade de sua infraestrutura tecnológica.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">✅</div>
+                    <div class="service-icon"><i class="fas fa-vial"></i></div>
                     <h3>Garantia de Qualidade (QA)</h3>
-                    <p>Realizamos testes rigorosos em todas as fases do desenvolvimento para assegurar a qualidade, performance e confiabilidade de suas aplicações.</p>
+                    <p>Realizamos testes rigorosos em todas as fases do desenvolvimento para assegurar a qualidade, performance, segurança e confiabilidade de suas aplicações.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🔄</div>
+                    <div class="service-icon"><i class="fas fa-sync-alt"></i></div>
                     <h3>Transformação Digital</h3>
-                    <p>Auxiliamos empresas na jornada de transformação digital, modernizando processos e implementando tecnologias disruptivas.</p>
+                    <p>Auxiliamos empresas na jornada de transformação digital, modernizando processos e implementando tecnologias disruptivas para aumentar a competitividade.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🔒</div>
+                    <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
                     <h3>Consultoria em Segurança</h3>
-                    <p>Desenvolvemos estratégias de segurança cibernética personalizadas para proteger seus ativos digitais e dados sensíveis.</p>
+                    <p>Desenvolvemos estratégias de segurança cibernética personalizadas para proteger seus ativos digitais e dados sensíveis contra ameaças emergentes.</p>
                 </div>
             </div>
         </div>
@@ -507,7 +632,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Nossas Soluções</h2>
-                <p>Desenvolvemos produtos tecnológicos inovadores que impulsionam a eficiência e competitividade de nossos clientes.</p>
+                <p>Desenvolvemos produtos tecnológicos inovadores que impulsionam a eficiência e competitividade de médias e grandes empresas.</p>
             </div>
             <div class="products-grid">
                 <div class="product-card">
@@ -515,8 +640,9 @@
                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Plataforma de IA">
                     </div>
                     <div class="product-content">
-                        <h3>Chaordium AI Platform</h3>
-                        <p>Plataforma integrada de Inteligência Artificial que permite a criação, treinamento e implementação de modelos preditivos sem necessidade de expertise técnica avançada.</p>
+                        <h3>nexLexa</h3>
+                        <p>Solução de IA generativa especializada para o setor jurídico. Moderniza e automatiza atendimento, redação e organização de peças e processos, além de gerenciar prazos e finanças. Tecnologia de ponta para máxima eficiência e inovação na era das inteligências artificiais.</p>
+                        <a href="#" class="btn btn-outline">Saiba Mais</a>
                     </div>
                 </div>
                 <div class="product-card">
@@ -524,8 +650,9 @@
                         <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sistema de Logs">
                     </div>
                     <div class="product-content">
-                        <h3>LogSync Enterprise</h3>
-                        <p>Sistema avançado de administração de logs que unifica dados de múltiplas fontes, aplicando machine learning para detecção proativa de anomalias e ameaças.</p>
+                        <h3>nexLogger</h3>
+                        <p>Sistema avançado de administração de logs que unifica dados de múltiplas fontes, aplicando machine learning para detecção proativa de anomalias e ameaças. Oferece visualização intuitiva e relatórios detalhados para tomada de decisão baseada em dados.</p>
+                        <a href="https://www.nexlogger.com" target="_blank" class="btn btn-outline">Visitar Site</a>
                     </div>
                 </div>
                 <div class="product-card">
@@ -534,7 +661,8 @@
                     </div>
                     <div class="product-content">
                         <h3>Q-Assure Pro</h3>
-                        <p>Suite completa de garantia de qualidade que automatiza testes funcionais, de performance e segurança, reduzindo significativamente o tempo de lançamento.</p>
+                        <p>Suite completa de garantia de qualidade que automatiza testes funcionais, de performance e segurança, reduzindo significativamente o tempo de lançamento. Inclui relatórios detalhados e integração contínua para desenvolvimento ágil e confiável.</p>
+                        <a href="#" class="btn btn-outline">Saiba Mais</a>
                     </div>
                 </div>
             </div>
@@ -551,15 +679,15 @@
             <div class="contact-container">
                 <div class="contact-info">
                     <h3>Informações de Contato</h3>
-                    <p><strong>Email:</strong> startup@chaordium.com</p>
-                    <p><strong>Website:</strong> www.chaordium.com</p>
-                    <p><strong>Horário de Atendimento:</strong> Segunda a Sexta, 9h às 18h</p>
+                    <p><i class="material-icons">email</i> <strong>Email:</strong> startup@chaordium.com</p>
+                    <p><i class="material-icons">language</i> <strong>Website:</strong> www.chaordium.com</p>
+                    <p><i class="material-icons">schedule</i> <strong>Horário de Atendimento:</strong> Segunda a Sexta, 9h às 18h</p>
                     <p>Nossa equipe está preparada para entender suas necessidades específicas e propor a solução mais adequada para seus desafios tecnológicos.</p>
                 </div>
                 <div class="contact-form">
                     <form id="contactForm">
                         <div class="form-group">
-                            <label for="name">Nome</label>
+                            <label for="name">Nome Completo</label>
                             <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
@@ -569,6 +697,18 @@
                         <div class="form-group">
                             <label for="company">Empresa</label>
                             <input type="text" id="company" name="company">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Serviço de Interesse</label>
+                            <select id="service" name="service">
+                                <option value="">Selecione um serviço</option>
+                                <option value="outsourcing">Outsourcing Tecnológico</option>
+                                <option value="ia">Inteligência Artificial</option>
+                                <option value="logs">Administração de Logs</option>
+                                <option value="qa">Garantia de Qualidade</option>
+                                <option value="consultoria">Consultoria</option>
+                                <option value="outro">Outro</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="message">Mensagem</label>
@@ -586,33 +726,37 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>Chaordium</h3>
-                    <p>Soluções tecnológicas inovadoras para empresas de médio e grande porte.</p>
+                    <div class="logo">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjUiIGN5PSIyNSIgcj0iMjAiIHN0cm9rZT0iIzAwYThmZiIgc3Ryb2tlLXdpZHRoPSIzIi8+CjxwYXRoIGQ9Ik0xNSAyNUMxNSAxOS40NzcyIDE5LjQ3NzIgMTUgMjUgMTVDMzAuNTIyOCAxNSAzNSAxOS40NzcyIDM1IDI1QzM1IDMwLjUyMjggMzAuNTIyOCAzNSAyNSAzNUMxOS40NzcyIDM1IDE1IDMwLjUyMjggMTUgMjVaIiBmaWxsPSIjMDBhOGZmIi8+CjxwYXRoIGQ9Ik0yMCAyMEwzMCAzME0zMCAyMEwyMCAzMCIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjIiLz4KPC9zdmc+" alt="Chaordium Logo">
+                        <div class="logo-text">
+                            <h1>CHAORDIUM</h1>
+                            <p>BREAKING CHAOS. BUILDING ORDER</p>
+                        </div>
+                    </div>
+                    <p style="margin-top: 15px;">Soluções tecnológicas inovadoras para empresas de médio e grande porte.</p>
                 </div>
                 <div class="footer-column">
                     <h3>Serviços</h3>
                     <ul>
-                        <li><a href="#services">Desenvolvimento Open Source</a></li>
+                        <li><a href="#services">Outsourcing Tecnológico</a></li>
                         <li><a href="#services">Integração de IA</a></li>
                         <li><a href="#services">Administração de Logs</a></li>
                         <li><a href="#services">Garantia de Qualidade</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Links Rápidos</h3>
+                    <h3>Produtos</h3>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">Sobre</a></li>
-                        <li><a href="#services">Serviços</a></li>
-                        <li><a href="#products">Produtos</a></li>
-                        <li><a href="#contact">Contato</a></li>
+                        <li><a href="#products">nexLexa</a></li>
+                        <li><a href="https://www.nexlogger.com" target="_blank">nexLogger</a></li>
+                        <li><a href="#products">Q-Assure Pro</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Contato</h3>
                     <ul>
-                        <li>Email: startup@chaordium.com</li>
-                        <li>Site: www.chaordium.com</li>
+                        <li><i class="material-icons">email</i> startup@chaordium.com</li>
+                        <li><i class="material-icons">language</i> www.chaordium.com</li>
                     </ul>
                 </div>
             </div>
@@ -621,6 +765,11 @@
             </div>
         </div>
     </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/5548999516862?text=Olá! Gostaria de mais informações sobre os serviços da Chaordium." target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <script>
         // Mobile menu toggle
@@ -649,8 +798,23 @@
         // Form submission
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Obrigado pelo seu interesse! Entraremos em contato em breve.');
-            this.reset();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const company = formData.get('company');
+            const service = formData.get('service');
+            const message = formData.get('message');
+            
+            // Create mailto link
+            const subject = `Contato Chaordium - ${service || 'Serviço de Interesse'}`;
+            const body = `Nome: ${name}%0D%0AEmail: ${email}%0D%0AEmpresa: ${company}%0D%0AServiço: ${service}%0D%0AMensagem: ${message}`;
+            
+            window.location.href = `mailto:startup@chaordium.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+            
+            // Show confirmation
+            alert('Obrigado pelo seu interesse! Você será redirecionado para enviar um email para nossa equipe.');
         });
     </script>
 </body>
